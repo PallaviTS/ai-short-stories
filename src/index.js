@@ -2,27 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import Welcome from "./components/Welcome/Welcome";
+import SignInPage from "./components/SignIn/SignIn";
+import UserProfilePage from "./components/UserProfile/UserProfile";
+
 import reportWebVitals from "./reportWebVitals";
 import {
   ClerkProvider,
   SignedIn,
-  SignIn,
-  SignUp
+  SignedOut
 } from "@clerk/clerk-react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 
 const clerk_pub_key = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-const PublicPage = () => {
-  return (
-    <>
-      <h1>Public page</h1>
-      <a href="/stories">Go to protected page</a>
-    </>
-    );
-}
 
 const ClerkProviderWithRoutes = () => {
   const navigate = useNavigate();
@@ -33,21 +27,29 @@ const ClerkProviderWithRoutes = () => {
       navigate={(to) => navigate(to)}
     >
       <Routes>
-        <Route path="/" element={<PublicPage />} />
         <Route
-          path="/sign-in/*"
-          element={<SignIn routing="path" path="/sign-in" />}
+          path="/"
+          element={<Welcome />}
         />
         <Route
-          path="/sign-up/*"
-          element={<SignUp routing="path" path="/sign-up" />}
+          path="/sign-in/*"
+          element={<SignInPage routing="path" path="/sign-in" />}
+        />
+        <Route
+          path="/user-profile*"
+          element={<UserProfilePage routing="path" path="/user-profile" />}
         />
         <Route
           path="/stories"
           element={
-            <SignedIn>
-              <App />
-            </SignedIn>
+            <>
+              <SignedIn>
+                <App />
+              </SignedIn>
+              <SignedOut>
+                <Welcome />
+              </SignedOut>
+            </>
           }
         />
       </Routes>

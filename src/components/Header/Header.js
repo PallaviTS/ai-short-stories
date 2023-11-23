@@ -25,7 +25,7 @@ const Header = () => {
             </a>
           </li>
           <li class="hover:underline hover:underline-offset-4">
-            <UserButton />
+            <UserButton afterSignOutUrl="/"/>
           </li>
         </ul>
       </div>
