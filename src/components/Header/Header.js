@@ -1,4 +1,7 @@
 import React from "react";
+import {
+  UserButton,
+} from "@clerk/clerk-react";
 
 const Header = () => {
   return (
@@ -6,29 +9,23 @@ const Header = () => {
       <div class="w-full bg-slate-500 p-4 opacity-80">
         <ul class="flex w-full justify-end gap-4 text-sm text-white">
           <li class="hover:underline hover:underline-offset-4">
-            <a href="#" class="">
-              {" "}
-              About Us{" "}
+            <a href="/" class="">
+              About Us
             </a>
           </li>
           <li class="hover:underline hover:underline-offset-4">
-            <a href="#" class="">
-              {" "}
-              Contact{" "}
-            </a>{" "}
+            <a href="/" class="">
+              Contact
+            </a>
             Us
           </li>
           <li class="hover:underline hover:underline-offset-4">
-            <a href="#" class="">
-              {" "}
-              Support{" "}
+            <a href="/" class="">
+              Support
             </a>
           </li>
           <li class="hover:underline hover:underline-offset-4">
-            <a href="#" class="">
-              {" "}
-              Login{" "}
-            </a>
+            <UserButton />
           </li>
         </ul>
       </div>
@@ -107,4 +104,3 @@ const Header = () => {
 };
 
 export default Header;
-// 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
